@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">NasaPhoto</string>
     <string name="photo_of_the_day_stub">Некоторое описание</string>
+    <string name="wiki_hint_text">Введите запрос</string>
+    <string name="wiki_helper_text">wiki</string>
+    <string name="wiki_lang">ru</string>
+    <string name="favorities">избранное</string>
+    <string name="settings">настройки</string>
+    <string name="before_yesterday">before yesterday</string>
+    <string name="yesterday">yesterday</string>
+    <string name="today">today</string>
+    <string name="some_text">Некоторый текст</string>
 </resources>

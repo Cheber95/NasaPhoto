@@ -20,16 +20,19 @@ class PictureOfTheDayViewModel(
 ) : ViewModel() {
 
     fun getData(): LiveData<AppStatePOD> {
-        sendServerRequest()
         return liveDataForViewToObserve
     }
 
-    private fun sendServerRequest() {
+    fun getPicture(date: String) {
+        sendServerRequest(date)
+    }
+
+    private fun sendServerRequest(date: String) {
         liveDataForViewToObserve.value = AppStatePOD.Loading(null)
         if (API_KEY.isBlank()) {
             AppStatePOD.Error(Throwable("You API key is Empty"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(API_KEY).enqueue(object :
+            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(API_KEY, date).enqueue(object :
                 Callback<ServerResponsePOD> {
                 override fun onResponse(
                     call: Call<ServerResponsePOD>,
