@@ -146,16 +146,19 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun dateFormatter(day: String) : String {
+    private fun dateFormatter(day: String) : String? {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
-        calendar.timeZone = TimeZone.getTimeZone("Etc/GMT-5")
+        calendar.timeZone = TimeZone.getTimeZone("Etc/GMT-7")
         when(day) {
             beforeYesterday -> {
                 calendar.add(Calendar.DAY_OF_MONTH, -2)
             }
             yesterday -> {
                 calendar.add(Calendar.DAY_OF_MONTH, -1)
+            }
+            today -> {
+                return null
             }
         }
         return DateFormat.format("yyyy-MM-dd",calendar.time).toString()
