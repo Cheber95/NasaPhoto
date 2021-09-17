@@ -29,6 +29,7 @@
                 app:endIconDrawable="@drawable/ic_wikipedia"
                 app:endIconMode="custom"
                 app:helperText="@string/wiki_helper_text"
+                app:shapeAppearanceOverlay="@style/nasaShapeAppearance"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -90,17 +91,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:backgroundTint="@color/design_default_color_error"
+            app:titleTextColor="@color/basicNasa_colorOnSecondary"
+            app:backgroundTint="@color/basicNasa_colorSecondary"
             app:fabAlignmentMode="center" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_700"
             app:layout_anchor="@id/bottom_app_bar"
             app:srcCompat="@drawable/ic_baseline_block_24"
-            app:tint="#FFFFFF" />
+            app:tint="@color/basicNasa_colorOnSecondary" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
