@@ -14,4 +14,11 @@
     <color name="basicNasa_colorSecondary">#1a237e</color>
     <color name="basicNasa_colorSecondaryVariant">#000051</color>
     <color name="basicNasa_colorOnSecondary">#FFFFFF</color>
+
+    <color name="NasaRed_colorPrimary">#c62828</color>
+    <color name="NasaRed_colorPrimaryVariant">#8e0000</color>
+    <color name="NasaRed_colorOnPrimary">@color/white</color>
+    <color name="NasaRed_colorSecondary">#ff8a80</color>
+    <color name="NasaRed_colorSecondaryVariant">#ffbcaf</color>
+    <color name="NasaRed_colorOnSecondary">@color/black</color>
 </resources>
