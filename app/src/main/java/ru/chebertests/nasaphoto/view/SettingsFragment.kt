@@ -1,15 +1,19 @@
 package ru.chebertests.nasaphoto.view
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioGroup
 import android.widget.Toast
-import com.google.android.material.button.MaterialButton
+import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.chebertests.nasaphoto.R
+
+private const val THEME_TAG = "THEME_TAG"
+private const val THEME_DEFAULT = "DEFAULT"
+private const val THEME_SECOND = "SECOND"
 
 class SettingsFragment : Fragment() {
 
@@ -25,35 +29,37 @@ class SettingsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val radioGroup = view.findViewById<RadioGroup>(R.id.theme_set_group)
-        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            when(group.checkedRadioButtonId) {
-                R.id.theme_one -> {
-                    Toast.makeText(context, "синяя", Toast.LENGTH_SHORT).show()
-                    requireActivity().setTheme(R.style.Theme_NasaPhoto)
+        settings_theme_selector_group.setOnCheckedChangeListener { group, checkedId ->
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+            val editor = sharedPref?.edit()
+            when(checkedId) {
+                settings_theme_selector_one.id -> {
+                    editor?.let {
+                        it.putString(THEME_TAG, THEME_DEFAULT)
+                        it.apply()
+                    }
                 }
-                R.id.theme_two -> {
-                    Toast.makeText(context, "красная", Toast.LENGTH_SHORT).show()
-                    requireActivity().setTheme(R.style.Theme_NasaPhotoRed)
+                settings_theme_selector_two.id -> {
+                    editor?.let {
+                        it.putString(THEME_TAG, THEME_SECOND)
+                        it.apply()
+                    }
                 }
             }
         }
 
-        val saveBtn = view.findViewById<Button>(R.id.settings_save_button)
-        saveBtn.setOnClickListener {
-            activity?.recreate()
-            parentFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance())
-                .commitNow()
+        settings_save_button.setOnClickListener {
+            requireActivity().recreate()
         }
     }
 
-
     companion object {
+
         fun newInstance() = SettingsFragment()
+
     }
 }

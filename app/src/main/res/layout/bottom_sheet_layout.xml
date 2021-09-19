@@ -22,7 +22,10 @@
 
     <TextView
         android:id="@+id/bottom_sheet_title"
-        style="@style/Theme.NasaPhoto.text_headers"
+        android:textAppearance="@style/Theme.NasaPhoto.text_headers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
@@ -30,7 +33,10 @@
 
     <TextView
         android:id="@+id/bottom_sheet_description"
-        style="@style/Theme.NasaPhoto.text_regular"
+        android:textAppearance="@style/Theme.NasaPhoto.text_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/defaultPadding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_title"

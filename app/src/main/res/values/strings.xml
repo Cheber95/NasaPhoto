@@ -10,8 +10,9 @@
     <string name="yesterday">yesterday</string>
     <string name="today">today</string>
     <string name="some_text">Некоторый текст</string>
-    <string name="bottom_menu_title_home">Навигация по приложению</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="settings_save">Сохранить настройки</string>
+    <string name="basic_nasaPhoto_theme">Базовая тема</string>
+    <string name="second_nasaPhoto_theme">Красная тема</string>
+    <string name="apply_settings">Применить настройки</string>
 </resources>

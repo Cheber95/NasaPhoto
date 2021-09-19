@@ -3,42 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".view.SettingsFragment">
+    tools:context=".view.SettingsFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         style="@style/Theme.NasaPhoto.text_headers"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/defaultPadding"
-        android:text="@string/settings" />
-
-    <RadioGroup
-        android:id="@+id/theme_set_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin">
+        android:text="@string/settings"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_gravity="center_horizontal"/>
 
-        <RadioButton
-            android:id="@+id/theme_one"
+    <RadioGroup
+        android:id="@+id/settings_theme_selector_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/settings_theme_selector_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="theme1"
-            android:textAppearance="@style/Theme.NasaPhoto.text_regular" />
-
-        <RadioButton
-            android:id="@+id/theme_two"
+            android:text="@string/basic_nasaPhoto_theme"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/settings_theme_selector_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="theme2"
-            android:textAppearance="@style/Theme.NasaPhoto.text_regular" />
+            android:text="@string/second_nasaPhoto_theme" />
     </RadioGroup>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/settings_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/settings_save"/>
+        android:layout_gravity="center"
+        android:text="@string/apply_settings"/>
 
 </LinearLayout>

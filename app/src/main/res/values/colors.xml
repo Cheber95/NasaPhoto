@@ -8,17 +8,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="basicNasa_colorPrimary">#bbdefb</color>
-    <color name="basicNasa_colorPrimaryVariant">#8aacc8</color>
-    <color name="basicNasa_colorOnPrimary">#000000</color>
-    <color name="basicNasa_colorSecondary">#1a237e</color>
-    <color name="basicNasa_colorSecondaryVariant">#000051</color>
-    <color name="basicNasa_colorOnSecondary">#FFFFFF</color>
+    <color name="basicNasa_colorPrimary">#004ba0</color>
+    <color name="basicNasa_colorPrimaryVariant">#1976d2</color>
+    <color name="basicNasa_colorOnPrimary">#FFFFFF</color>
+    <color name="basicNasa_colorSecondary">#bbdefb</color>
+    <color name="basicNasa_colorSecondaryVariant">#eeffff</color>
+    <color name="basicNasa_colorOnSecondary">#000000</color>
 
-    <color name="NasaRed_colorPrimary">#c62828</color>
-    <color name="NasaRed_colorPrimaryVariant">#8e0000</color>
-    <color name="NasaRed_colorOnPrimary">@color/white</color>
-    <color name="NasaRed_colorSecondary">#ff8a80</color>
-    <color name="NasaRed_colorSecondaryVariant">#ffbcaf</color>
-    <color name="NasaRed_colorOnSecondary">@color/black</color>
+    <color name="secondNasa_colorPrimary">#c62828</color>
+    <color name="secondNasa_colorPrimaryVariant">#8e0000</color>
+    <color name="secondNasa_colorOnPrimary">#FFFFFF</color>
+    <color name="secondNasa_colorSecondary">#f57f17</color>
+    <color name="secondNasa_colorSecondaryVariant">#ffb04c</color>
+    <color name="secondNasa_colorOnSecondary">#FFFFFF</color>
+
 </resources>

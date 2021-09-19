@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.NasaPhoto"
     tools:context=".view.PictureOfTheDayFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -19,7 +18,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/wiki_hint_text"
@@ -29,7 +27,6 @@
                 app:endIconDrawable="@drawable/ic_wikipedia"
                 app:endIconMode="custom"
                 app:helperText="@string/wiki_helper_text"
-                app:shapeAppearanceOverlay="@style/nasaShapeAppearance"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -45,31 +42,37 @@
                 android:id="@+id/chip_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleSelection="true"
-                app:layout_constraintTop_toBottomOf="@id/input_layout"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/input_layout"
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
-                    style="@style/Theme.NasaPhoto.Chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/before_yesterday" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/Theme.NasaPhoto.Chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/yesterday" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/Theme.NasaPhoto.Chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/today" />
             </com.google.android.material.chip.ChipGroup>
 
             <TextView
                 android:id="@+id/title"
-                style="@style/Theme.NasaPhoto.text_headers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/Theme.NasaPhoto.text_headers"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/chip_group"
-                tools:text="@string/some_text"/>
+                tools:text="@string/some_text" />
 
             <ru.chebertests.nasaphoto.view.EquilateralImageView
                 android:id="@+id/image_view"
@@ -91,8 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:titleTextColor="@color/basicNasa_colorOnSecondary"
-            app:backgroundTint="@color/basicNasa_colorSecondary"
+            android:backgroundTint="?themeColorPrimary"
             app:fabAlignmentMode="center" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -100,8 +102,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/ic_baseline_block_24"
-            app:tint="@color/basicNasa_colorOnSecondary" />
+            android:tint="?themeColorOnPrimary"
+            app:srcCompat="@drawable/ic_baseline_block_24" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

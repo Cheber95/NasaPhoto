@@ -84,11 +84,11 @@ class PictureOfTheDayFragment : Fragment() {
                 ).show()
             }
             R.id.app_bar_settings -> {
-                Toast.makeText(
-                    context,
-                    "Скоро здесь появятся какие-нибудь настройки",
-                    Toast.LENGTH_SHORT
-                ).show()
+                parentFragmentManager
+                    .beginTransaction()
+                    .addToBackStack("tag")
+                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .commit()
             }
             android.R.id.home -> {
                 activity?.let {
@@ -97,6 +97,11 @@ class PictureOfTheDayFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        setHasOptionsMenu(false)
     }
 
     private fun renderData(state: AppStatePOD?) {

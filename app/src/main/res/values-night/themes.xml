@@ -1,16 +1,88 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+
     <style name="Theme.NasaPhoto" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+
+        <item name="themeColorPrimary">@color/basicNasa_colorPrimary</item>
+        <item name="themeColorPrimaryVariant">@color/basicNasa_colorPrimaryVariant</item>
+        <item name="themeColorOnPrimary">@color/basicNasa_colorOnPrimary</item>
+        <item name="themeColorSecondary">@color/basicNasa_colorSecondary</item>
+        <item name="themeColorSecondaryVariant">@color/basicNasa_colorSecondaryVariant</item>
+        <item name="themeColorOnSecondary">@color/basicNasa_colorOnSecondary</item>
+
+        <item name="colorPrimary">?themeColorPrimary</item>
+        <item name="colorPrimaryVariant">?themeColorPrimaryVariant</item>
+        <item name="colorOnPrimary">?themeColorOnPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">?themeColorSecondary</item>
+        <item name="colorSecondaryVariant">?themeColorSecondaryVariant</item>
+        <item name="colorOnSecondary">?themeColorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="title_font_family">?fontFamily</item>
+        <item name="chipStyle">@style/ChipGroup</item>
+        <item name="textInputStyle">@style/basicTextInputLayoutStyle</item>
     </style>
+
+    <style name="ChipGroup" parent="Widget.MaterialComponents.Chip.Choice">
+
+        <item name="android:textColor">@color/mtrl_choice_chip_text_color</item>
+
+        <item name="chipBackgroundColor">@color/mtrl_choice_chip_background_color</item>
+        <item name="rippleColor">@color/mtrl_choice_chip_ripple_color</item>
+        <item name="shapeAppearanceOverlay">@style/nasaShapeAppearance</item>
+    </style>
+
+    <style name="nasaShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">25%</item>
+    </style>
+
+    <style name="basicTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/nasaShapeAppearance</item>
+    </style>
+
+    <style name="Theme.NasaPhotoTwo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="themeColorPrimary">@color/secondNasa_colorPrimary</item>
+        <item name="themeColorPrimaryVariant">@color/secondNasa_colorPrimaryVariant</item>
+        <item name="themeColorOnPrimary">@color/secondNasa_colorOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="themeColorSecondary">@color/secondNasa_colorSecondary</item>
+        <item name="themeColorSecondaryVariant">@color/secondNasa_colorSecondaryVariant</item>
+        <item name="themeColorOnSecondary">@color/secondNasa_colorOnSecondary</item>
+
+        <item name="colorPrimary">?themeColorPrimary</item>
+        <item name="colorPrimaryVariant">?themeColorPrimaryVariant</item>
+        <item name="colorOnPrimary">?themeColorOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">?themeColorSecondary</item>
+        <item name="colorSecondaryVariant">?themeColorSecondaryVariant</item>
+        <item name="colorOnSecondary">?themeColorOnSecondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="title_font_family">@font/courgette</item>
+        <item name="chipStyle">@style/ChipGroupSecond</item>
+        <item name="textInputStyle">@style/secondTextInputLayoutStyle</item>
+    </style>
+
+    <style name="ChipGroupSecond" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textColor">@color/mtrl_choice_chip_text_color</item>
+
+        <item name="chipBackgroundColor">@color/mtrl_choice_chip_background_color</item>
+        <item name="rippleColor">@color/mtrl_choice_chip_ripple_color</item>
+        <item name="shapeAppearanceOverlay">@style/nasaShapeAppearanceRound</item>
+    </style>
+
+    <style name="nasaShapeAppearanceRound" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
+    </style>
+
+    <style name="secondTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/nasaShapeAppearanceRound</item>
+    </style>
+
 </resources>

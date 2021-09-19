@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="basicNasa_colorPrimary">#000a12</color>
+    <color name="basicNasa_colorPrimaryVariant">#4f5b62</color>
+    <color name="basicNasa_colorOnPrimary">#FFFFFF</color>
+    <color name="basicNasa_colorSecondary">#000051</color>
+    <color name="basicNasa_colorSecondaryVariant">#1a237e</color>
+    <color name="basicNasa_colorOnSecondary">#FFFFFF</color>
+
+    <color name="secondNasa_colorPrimary">#7f0000</color>
+    <color name="secondNasa_colorPrimaryVariant">#b71c1c</color>
+    <color name="secondNasa_colorOnPrimary">#FFFFFF</color>
+    <color name="secondNasa_colorSecondary">#37474f</color>
+    <color name="secondNasa_colorSecondaryVariant">#62727b</color>
+    <color name="secondNasa_colorOnSecondary">#FFFFFF</color>
+</resources>
