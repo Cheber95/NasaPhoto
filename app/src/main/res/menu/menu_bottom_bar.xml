@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@android:id/home"
+        android:icon="@drawable/ic_baseline_menu_24"
+        app:showAsAction="always"
+        />
+
+    <item
         android:id="@+id/app_bar_fav"
         android:icon="@drawable/ic_baseline_favorite_border_24"
         android:title="@string/favorities"

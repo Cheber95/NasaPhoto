@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="basicNasa_colorPrimary">#004ba0</color>
+    <color name="basicNasa_colorPrimaryVariant">#1976d2</color>
+    <color name="basicNasa_colorOnPrimary">#FFFFFF</color>
+    <color name="basicNasa_colorSecondary">#bbdefb</color>
+    <color name="basicNasa_colorSecondaryVariant">#eeffff</color>
+    <color name="basicNasa_colorOnSecondary">#000000</color>
+
+    <color name="secondNasa_colorPrimary">#c62828</color>
+    <color name="secondNasa_colorPrimaryVariant">#8e0000</color>
+    <color name="secondNasa_colorOnPrimary">#FFFFFF</color>
+    <color name="secondNasa_colorSecondary">#f57f17</color>
+    <color name="secondNasa_colorSecondaryVariant">#ffb04c</color>
+    <color name="secondNasa_colorOnSecondary">#FFFFFF</color>
+
 </resources>

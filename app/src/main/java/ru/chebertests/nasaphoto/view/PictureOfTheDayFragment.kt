@@ -4,11 +4,12 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
@@ -43,7 +44,7 @@ class PictureOfTheDayFragment : Fragment() {
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
         date.timeInMillis = System.currentTimeMillis()
-        viewModel.getPicture(dateFormatter(date))
+        viewModel.getPicture(null)
 
         return inflater.inflate(R.layout.picture_of_the_day_fragment, container, false)
     }
@@ -60,21 +61,7 @@ class PictureOfTheDayFragment : Fragment() {
 
         chip_group.setOnCheckedChangeListener { chip_group, position ->
             chip_group.findViewById<Chip>(position)?.let {
-                when(it.text) {
-                    this.beforeYesterday -> {
-                        val beforeYesterdayCal = Calendar.getInstance()
-                        beforeYesterdayCal.add(Calendar.DAY_OF_MONTH, -2)
-                        viewModel.getPicture(dateFormatter(beforeYesterdayCal))
-                    }
-                    this.yesterday -> {
-                        val yesterdayCal = Calendar.getInstance()
-                        yesterdayCal.add(Calendar.DAY_OF_MONTH, -1)
-                        viewModel.getPicture(dateFormatter(yesterdayCal))
-                    }
-                    this.today -> {
-                        viewModel.getPicture(dateFormatter(date))
-                    }
-                }
+                viewModel.getPicture(dateFormatter(it.text as String))
             }
         }
 
@@ -97,11 +84,11 @@ class PictureOfTheDayFragment : Fragment() {
                 ).show()
             }
             R.id.app_bar_settings -> {
-                Toast.makeText(
-                    context,
-                    "Скоро здесь появятся какие-нибудь настройки",
-                    Toast.LENGTH_SHORT
-                ).show()
+                parentFragmentManager
+                    .beginTransaction()
+                    .addToBackStack("tag")
+                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .commit()
             }
             android.R.id.home -> {
                 activity?.let {
@@ -110,6 +97,11 @@ class PictureOfTheDayFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        setHasOptionsMenu(false)
     }
 
     private fun renderData(state: AppStatePOD?) {
@@ -160,8 +152,23 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun dateFormatter(date: Calendar) =
-        "${date.get(Calendar.YEAR)}-${date.get(Calendar.MONTH) + 1}-${date.get(Calendar.DAY_OF_MONTH)}"
+    private fun dateFormatter(day: String) : String? {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.timeZone = TimeZone.getTimeZone("Etc/GMT-7")
+        when(day) {
+            beforeYesterday -> {
+                calendar.add(Calendar.DAY_OF_MONTH, -2)
+            }
+            yesterday -> {
+                calendar.add(Calendar.DAY_OF_MONTH, -1)
+            }
+            today -> {
+                return null
+            }
+        }
+        return DateFormat.format("yyyy-MM-dd",calendar.time).toString()
+    }
 
     companion object {
         fun newInstance() = PictureOfTheDayFragment()

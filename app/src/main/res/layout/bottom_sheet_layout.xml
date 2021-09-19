@@ -22,12 +22,10 @@
 
     <TextView
         android:id="@+id/bottom_sheet_title"
-        android:layout_width="wrap_content"
+        android:textAppearance="@style/Theme.NasaPhoto.text_headers"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:paddingStart="@dimen/defaultPadding"
-        android:paddingEnd="@dimen/defaultPadding"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
@@ -35,10 +33,10 @@
 
     <TextView
         android:id="@+id/bottom_sheet_description"
-        android:layout_width="wrap_content"
+        android:textAppearance="@style/Theme.NasaPhoto.text_regular"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/defaultPadding"
-        android:paddingEnd="@dimen/defaultPadding"
+        android:padding="@dimen/defaultPadding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_title"

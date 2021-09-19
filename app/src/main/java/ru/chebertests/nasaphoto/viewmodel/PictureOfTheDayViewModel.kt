@@ -23,11 +23,11 @@ class PictureOfTheDayViewModel(
         return liveDataForViewToObserve
     }
 
-    fun getPicture(date: String) {
+    fun getPicture(date: String?) {
         sendServerRequest(date)
     }
 
-    private fun sendServerRequest(date: String) {
+    private fun sendServerRequest(date: String?) {
         liveDataForViewToObserve.value = AppStatePOD.Loading(null)
         if (API_KEY.isBlank()) {
             AppStatePOD.Error(Throwable("You API key is Empty"))

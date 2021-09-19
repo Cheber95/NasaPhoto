@@ -10,5 +10,5 @@ private const val DATE = "date"
 
 interface PictureOfTheDayAPI {
     @GET(ENDPOINT_APOD)
-    fun getPictureOfTheDay(@Query(API_KEY_FIELD) apiKey: String, @Query(DATE) date: String): Call<ServerResponsePOD>
+    fun getPictureOfTheDay(@Query(API_KEY_FIELD) apiKey: String, @Query(DATE) date: String?): Call<ServerResponsePOD>
 }

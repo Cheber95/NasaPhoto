@@ -4,10 +4,15 @@
     <string name="wiki_hint_text">Введите запрос</string>
     <string name="wiki_helper_text">wiki</string>
     <string name="wiki_lang">ru</string>
-    <string name="favorities">избранное</string>
-    <string name="settings">настройки</string>
+    <string name="favorities">Избранное</string>
+    <string name="settings">Настройки</string>
     <string name="before_yesterday">before yesterday</string>
     <string name="yesterday">yesterday</string>
     <string name="today">today</string>
     <string name="some_text">Некоторый текст</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="basic_nasaPhoto_theme">Базовая тема</string>
+    <string name="second_nasaPhoto_theme">Красная тема</string>
+    <string name="apply_settings">Применить настройки</string>
 </resources>
