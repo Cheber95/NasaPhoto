@@ -15,4 +15,5 @@
     <string name="basic_nasaPhoto_theme">Базовая тема</string>
     <string name="second_nasaPhoto_theme">Красная тема</string>
     <string name="apply_settings">Применить настройки</string>
+    <string name="settings_current_theme_title">Текущая тема</string>
 </resources>

@@ -1,40 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.SettingsFragment"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        style="@style/Theme.NasaPhoto.text_headers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settings"
-        android:layout_margin="@dimen/default_margin"
-        android:layout_gravity="center_horizontal"/>
-
-    <RadioGroup
-        android:id="@+id/settings_theme_selector_group"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/settings_theme_selector_one"
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/settings_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/menu_settings_appbar"
+            app:title="@string/settings" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:context=".view.SettingsFragment">
+
+        <TextView
+            style="@style/Theme.NasaPhoto.text_headers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/basic_nasaPhoto_theme"/>
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/settings_theme_selector_two"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/settings_current_theme_title" />
+
+        <RadioGroup
+            android:id="@+id/settings_theme_selector_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/settings_theme_selector_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/basic_nasaPhoto_theme" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/settings_theme_selector_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/second_nasaPhoto_theme" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings_save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/second_nasaPhoto_theme" />
-    </RadioGroup>
+            android:layout_gravity="center"
+            android:text="@string/apply_settings" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/settings_save_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/apply_settings"/>
-
-</LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
