@@ -69,11 +69,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> {
-                Toast.makeText(
-                    context,
-                    "В методичке предложено сделать раздел избранное",
-                    Toast.LENGTH_SHORT
-                ).show()
+                toast("В методичке предложено сделать раздел избранное")
             }
             R.id.app_bar_settings -> {
                 parentFragmentManager
@@ -106,7 +102,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
                         .with(image_view)
                         .load(R.drawable.ic_banner_foreground)
                         .into(image_view)
-                    Toast.makeText(context, "image not found", Toast.LENGTH_LONG).show()
+                    toast("image not found")
                 } else {
                     Glide
                         .with(image_view)
@@ -128,7 +124,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
             }
             is AppStatePOD.Error -> {
                 state.error.printStackTrace()
-                Toast.makeText(context, "error", Toast.LENGTH_LONG).show()
+                state.error.message?.let { toast(it) }
             }
         }
     }

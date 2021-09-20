@@ -19,16 +19,17 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.navigation_drawer, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         navigation_view.setNavigationItemSelectedListener { it ->
             when (it.itemId) {
                 R.id.navigation_one -> {
-                    val manager = activity?.supportFragmentManager
+                    val manager = parentFragmentManager
                     manager
-                        ?.beginTransaction()
-                        ?.replace(R.id.container, ViewPagerFragment.newInstance())
-                        ?.commit()
+                        .beginTransaction()
+                        .addToBackStack("tag")
+                        .replace(R.id.container, ViewPagerFragment())
+                        .commit()
                 }
                 R.id.navigation_two -> {
                     Toast.makeText(context, "Выбран экран 2", Toast.LENGTH_SHORT).show()
@@ -37,5 +38,4 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
             true
         }
     }
-
 }

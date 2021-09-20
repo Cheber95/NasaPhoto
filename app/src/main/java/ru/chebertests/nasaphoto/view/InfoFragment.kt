@@ -10,6 +10,6 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
     }
 
     companion object {
-        fun newInstance(param1: String, param2: String) = MarsFragment()
+        fun newInstance() = MarsFragment()
     }
 }

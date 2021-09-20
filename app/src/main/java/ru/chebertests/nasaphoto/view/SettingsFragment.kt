@@ -15,10 +15,6 @@ private const val THEME_SECOND = "SECOND"
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,8 +55,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.undo -> {
-                activity?.supportFragmentManager
-                    ?.popBackStack()
+                activity?.supportFragmentManager?.popBackStack()
             }
         }
         return super.onOptionsItemSelected(item)

@@ -10,6 +10,6 @@ class EarthFragment : BaseFragment(R.layout.fragment_earth) {
     }
 
     companion object {
-        fun newInstance(param1: String, param2: String) = MarsFragment()
+        fun newInstance() = MarsFragment()
     }
 }
