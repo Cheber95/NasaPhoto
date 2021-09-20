@@ -21,10 +21,14 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        navigation_view.setNavigationItemSelectedListener {
+        navigation_view.setNavigationItemSelectedListener { it ->
             when (it.itemId) {
                 R.id.navigation_one -> {
-                    Toast.makeText(context, "Выбран экран 1", Toast.LENGTH_SHORT).show()
+                    val manager = activity?.supportFragmentManager
+                    manager
+                        ?.beginTransaction()
+                        ?.replace(R.id.container, ViewPagerFragment.newInstance())
+                        ?.commit()
                 }
                 R.id.navigation_two -> {
                     Toast.makeText(context, "Выбран экран 2", Toast.LENGTH_SHORT).show()

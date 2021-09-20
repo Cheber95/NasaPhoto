@@ -3,6 +3,9 @@ package ru.chebertests.nasaphoto.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,38 +27,22 @@ class PictureOfTheDayViewModel(
     }
 
     fun getPicture(date: String?) {
-        sendServerRequest(date)
-    }
-
-    private fun sendServerRequest(date: String?) {
         liveDataForViewToObserve.value = AppStatePOD.Loading(null)
         if (API_KEY.isBlank()) {
             AppStatePOD.Error(Throwable("You API key is Empty"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(API_KEY, date).enqueue(object :
-                Callback<ServerResponsePOD> {
-                override fun onResponse(
-                    call: Call<ServerResponsePOD>,
-                    response: Response<ServerResponsePOD>
-                ) {
-                    if (response.isSuccessful && response.body() != null) {
-                        liveDataForViewToObserve.value = AppStatePOD.Success(response.body()!!)
+            viewModelScope.launch(Dispatchers.IO) {
+                val res = retrofitImpl.getRetrofitImpl().getPictureOfTheDay(API_KEY, date)
+                if (res.isSuccessful) {
+                    liveDataForViewToObserve.postValue(AppStatePOD.Success(res.body()!!))
+                } else {
+                    if (res.message().isEmpty()) {
+                        liveDataForViewToObserve.postValue(AppStatePOD.Error(Throwable("error")))
                     } else {
-                        val message = response.message()
-                        if (message.isNullOrEmpty()) {
-                            liveDataForViewToObserve.value = AppStatePOD.Error(Throwable("error"))
-                        } else {
-                            liveDataForViewToObserve.value = AppStatePOD.Error(Throwable(message))
-                        }
+                        liveDataForViewToObserve.postValue(AppStatePOD.Error(Throwable(res.message())))
                     }
                 }
-
-                override fun onFailure(call: Call<ServerResponsePOD>, t: Throwable) {
-                    AppStatePOD.Error(t)
-                }
-
-            })
+            }
         }
     }
-
 }

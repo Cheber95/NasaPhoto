@@ -20,7 +20,7 @@ import ru.chebertests.nasaphoto.model.appstate.AppStatePOD
 import ru.chebertests.nasaphoto.viewmodel.PictureOfTheDayViewModel
 import java.util.*
 
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragment) {
 
     private lateinit var viewModel: PictureOfTheDayViewModel
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
@@ -35,22 +35,14 @@ class PictureOfTheDayFragment : Fragment() {
         getString(R.string.today)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
         date.timeInMillis = System.currentTimeMillis()
         viewModel.getPicture(null)
-
-        return inflater.inflate(R.layout.picture_of_the_day_fragment, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {

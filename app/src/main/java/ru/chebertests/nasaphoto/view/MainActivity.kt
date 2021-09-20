@@ -13,11 +13,11 @@ private const val THEME_SECOND = "SECOND"
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val currentThemeChanged = this.getPreferences(Context.MODE_PRIVATE).getString(THEME_TAG,THEME_DEFAULT)
-        when (currentThemeChanged) {
+        when (this.getPreferences(Context.MODE_PRIVATE).getString(THEME_TAG,THEME_DEFAULT)) {
             THEME_DEFAULT -> {
                 setTheme(R.style.Theme_NasaPhoto)
             }
@@ -35,4 +35,5 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
 }

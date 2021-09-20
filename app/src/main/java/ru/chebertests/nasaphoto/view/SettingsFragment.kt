@@ -13,18 +13,10 @@ private const val THEME_TAG = "THEME_TAG"
 private const val THEME_DEFAULT = "DEFAULT"
 private const val THEME_SECOND = "SECOND"
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
     @SuppressLint("CommitPrefEdits")
