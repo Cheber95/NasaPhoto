@@ -1,8 +1,9 @@
-package ru.chebertests.nasaphoto.view
+package ru.chebertests.nasaphoto.view.nasa_services
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import ru.chebertests.nasaphoto.view.BaseFragment
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 

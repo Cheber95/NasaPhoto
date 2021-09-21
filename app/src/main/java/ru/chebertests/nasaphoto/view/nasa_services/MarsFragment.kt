@@ -1,4 +1,4 @@
-package ru.chebertests.nasaphoto.view
+package ru.chebertests.nasaphoto.view.nasa_services
 
 import android.app.DatePickerDialog
 import android.os.Build
@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_mars.*
 import kotlinx.android.synthetic.main.fragment_mars.loading_item
 import ru.chebertests.nasaphoto.R
 import ru.chebertests.nasaphoto.model.appstate.AppStateMars
+import ru.chebertests.nasaphoto.view.BaseFragment
 import ru.chebertests.nasaphoto.viewmodel.MarsFragmentViewModel
 import java.util.*
 

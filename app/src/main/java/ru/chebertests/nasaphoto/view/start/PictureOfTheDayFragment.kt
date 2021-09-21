@@ -1,4 +1,4 @@
-package ru.chebertests.nasaphoto.view
+package ru.chebertests.nasaphoto.view.start
 
 import android.content.Intent
 import android.net.Uri
@@ -6,10 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.children
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
@@ -17,6 +14,8 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.picture_of_the_day_fragment.*
 import ru.chebertests.nasaphoto.R
 import ru.chebertests.nasaphoto.model.appstate.AppStatePOD
+import ru.chebertests.nasaphoto.view.BaseFragment
+import ru.chebertests.nasaphoto.view.MainActivity
 import ru.chebertests.nasaphoto.viewmodel.PictureOfTheDayViewModel
 import java.util.*
 

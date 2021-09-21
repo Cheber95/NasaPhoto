@@ -19,4 +19,10 @@
     <string name="hello_blank_mars_fragment">I am Mars Fragment</string>
     <string name="hello_blank_earth_fragment">I am Earth Fragment</string>
     <string name="hello_blank_info_fragment">I am Info Fragment</string>
+    <string name="item_nasa_services">Сервисы NASA</string>
+    <string name="item_bottomnav_game">Игра с BottomNav</string>
+    <string name="game_football">Футбол</string>
+    <string name="game_hockey">Хоккей</string>
+    <string name="game_volleyball">Воллейбол</string>
+    <string name="game_basket">Баскетбол</string>
 </resources>

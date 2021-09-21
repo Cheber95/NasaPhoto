@@ -1,19 +1,19 @@
-package ru.chebertests.nasaphoto.view
+package ru.chebertests.nasaphoto.view.start
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.chebertests.nasaphoto.R
+import ru.chebertests.nasaphoto.view.BaseFragment
+import ru.chebertests.nasaphoto.view.MainActivity
 
 private const val THEME_TAG = "THEME_TAG"
 private const val THEME_DEFAULT = "DEFAULT"
 private const val THEME_SECOND = "SECOND"
 
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

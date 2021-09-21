@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.nasa_services.InfoFragment">
+    tools:context=".view.game.BasketFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <TextView
-        style="@style/Theme.NasaPhoto.text_headers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_info_fragment" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

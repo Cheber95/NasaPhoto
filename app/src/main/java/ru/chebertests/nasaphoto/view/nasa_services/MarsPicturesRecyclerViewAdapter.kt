@@ -1,4 +1,4 @@
-package ru.chebertests.nasaphoto.view
+package ru.chebertests.nasaphoto.view.nasa_services
 
 import android.view.LayoutInflater
 import android.view.View

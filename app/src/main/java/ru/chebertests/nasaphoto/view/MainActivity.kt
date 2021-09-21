@@ -3,9 +3,8 @@ package ru.chebertests.nasaphoto.view
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import ru.chebertests.nasaphoto.R
-import java.util.prefs.Preferences
+import ru.chebertests.nasaphoto.view.start.PictureOfTheDayFragment
 
 private const val THEME_TAG = "THEME_TAG"
 private const val THEME_DEFAULT = "DEFAULT"
