@@ -9,8 +9,7 @@
     <FrameLayout
         android:id="@+id/game_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.game.SoccerFragment"/>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/game_bottom_navigation"
@@ -20,6 +19,7 @@
         app:backgroundTint="?colorPrimary"
         app:menu="@menu/menu_bottom_game"
         app:itemIconTint="@drawable/tab_color"
-        app:itemTextColor="@drawable/tab_color"/>
+        app:itemTextColor="@drawable/tab_color"
+        app:labelVisibilityMode="labeled"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -25,4 +25,11 @@
     <string name="game_hockey">Хоккей</string>
     <string name="game_volleyball">Воллейбол</string>
     <string name="game_basket">Баскетбол</string>
+    <string name="game_soccer_button_text">Удар!</string>
+    <string name="game_hockey_button_text">Шайбу!</string>
+    <string name="game_volley_button_text">Подача!</string>
+    <string name="game_basket_button_text">Бросок!</string>
+    <string name="game_sport_football">Вид спорта</string>
+    <string name="game_sport_button_text">Действие</string>
+    <string name="info_fragment_overview_info">Пролистывайте фрагменты. \nНа данный момент реализованы фрагменты:\n- Фото с Марса: подборка фото, сделанных в выбранный день;\n- Фото Земли: планируется подборка фото Земли.\nВернуться на основной экран можно нажатием клавиши «назад»</string>
 </resources>

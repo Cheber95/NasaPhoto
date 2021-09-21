@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="game_gold">#FF9800</color>
+
     <color name="basicNasa_colorPrimary">#004ba0</color>
     <color name="basicNasa_colorPrimaryVariant">#1976d2</color>
     <color name="basicNasa_colorOnPrimary">#FFFFFF</color>

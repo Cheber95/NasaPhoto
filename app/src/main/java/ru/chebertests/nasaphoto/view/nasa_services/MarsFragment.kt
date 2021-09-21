@@ -35,7 +35,6 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
         }
 
         viewModel.getPicturesFromMars(DateFormat.format("yyyy-MM-dd", currentDate.time).toString())
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

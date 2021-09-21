@@ -41,6 +41,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
         date.timeInMillis = System.currentTimeMillis()
+        // для загрузки видео использовать дату "2021-09-17" - последняя дата, когда приходило видео
         viewModel.getPicture(null)
 
         input_layout.setEndIconOnClickListener {
@@ -52,6 +53,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
 
         chip_group.setOnCheckedChangeListener { chip_group, position ->
             chip_group.findViewById<Chip>(position)?.let {
+                image_view.setOnClickListener { null }
                 viewModel.getPicture(dateFormatter(it.text as String))
             }
         }
@@ -86,6 +88,11 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        image_view.setOnClickListener { null }
+    }
+
     override fun onDestroyOptionsMenu() {
         super.onDestroyOptionsMenu()
         setHasOptionsMenu(false)
@@ -103,10 +110,22 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
                         .into(image_view)
                     toast("image not found")
                 } else {
-                    Glide
-                        .with(image_view)
-                        .load(url)
-                        .into(image_view)
+                    if (url.substringAfterLast(".") == "jpg") {
+                        Glide
+                            .with(image_view)
+                            .load(url)
+                            .into(image_view)
+                    } else {
+                        Glide
+                            .with(image_view)
+                            .load(R.drawable.ic_baseline_play)
+                            .into(image_view)
+                        image_view.setOnClickListener {
+                            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                                data = Uri.parse(url)
+                            })
+                        }
+                    }
                     title.text = serverResponseData.title
 
                     bottom_sheet_title.text = serverResponseData.title
@@ -139,11 +158,11 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
         setHasOptionsMenu(true)
     }
 
-    private fun dateFormatter(day: String) : String? {
+    private fun dateFormatter(day: String): String? {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
         calendar.timeZone = TimeZone.getTimeZone("Etc/GMT-7")
-        when(day) {
+        when (day) {
             beforeYesterday -> {
                 calendar.add(Calendar.DAY_OF_MONTH, -2)
             }
@@ -154,7 +173,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
                 return null
             }
         }
-        return DateFormat.format("yyyy-MM-dd",calendar.time).toString()
+        return DateFormat.format("yyyy-MM-dd", calendar.time).toString()
     }
 
     companion object {
