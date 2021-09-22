@@ -1,5 +1,6 @@
 package ru.chebertests.nasaphoto.view.start
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
@@ -98,6 +99,7 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
         setHasOptionsMenu(false)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun renderData(state: AppStatePOD?) {
         when (state) {
             is AppStatePOD.Success -> {
@@ -116,9 +118,10 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
                             .load(url)
                             .into(image_view)
                     } else {
+                        val playIcon = context?.getDrawable(R.drawable.ic_baseline_play)
                         Glide
                             .with(image_view)
-                            .load(R.drawable.ic_baseline_play)
+                            .load(playIcon)
                             .into(image_view)
                         image_view.setOnClickListener {
                             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -141,8 +144,10 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
                 }
             }
             is AppStatePOD.Error -> {
-                state.error.printStackTrace()
-                state.error.message?.let { toast(it) }
+                state.apply {
+                    error.printStackTrace()
+                    error.message?.let { toast(it) }
+                }
             }
         }
     }

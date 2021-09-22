@@ -32,4 +32,6 @@
     <string name="game_sport_football">Вид спорта</string>
     <string name="game_sport_button_text">Действие</string>
     <string name="info_fragment_overview_info">Пролистывайте фрагменты. \nНа данный момент реализованы фрагменты:\n- Фото с Марса: подборка фото, сделанных в выбранный день;\n- Фото Земли: планируется подборка фото Земли.\nВернуться на основной экран можно нажатием клавиши «назад»</string>
+    <string name="earth_fragment_button">Снимок Земли</string>
+    <string name="earth_fragment_open_browser">Открыть в браузере</string>
 </resources>

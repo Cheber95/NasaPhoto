@@ -8,7 +8,11 @@ private const val ENDPOINT_APOD = "planetary/apod/"
 private const val API_KEY_FIELD = "api_key"
 private const val DATE = "date"
 private const val ENDPOINT_MARS = "mars-photos/api/v1/rovers/curiosity/photos/"
+private const val ENDPOINT_EARTH = "mars-photos/api/v1/rovers/curiosity/photos/"
 private const val MARS_EARTH_DATE = "earth_date"
+private const val EARTH_DATE = "earth_date"
+private const val EARTH_LAT = "earth_date"
+private const val EARTH_LON = "earth_date"
 
 interface PictureOfTheDayAPI {
     @GET(ENDPOINT_APOD)
