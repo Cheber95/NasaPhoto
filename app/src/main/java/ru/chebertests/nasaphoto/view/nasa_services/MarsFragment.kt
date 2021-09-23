@@ -1,5 +1,6 @@
 package ru.chebertests.nasaphoto.view.nasa_services
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
@@ -22,6 +23,7 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
     private val adapter = MarsPicturesRecyclerViewAdapter()
     private val currentDate = Calendar.getInstance()
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +31,9 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
         currentDate.timeInMillis = System.currentTimeMillis()
-        current_earth_date.text = DateFormat.format("dd MMMM yyyy", currentDate.time).toString()
+        current_earth_date.text = "${
+            DateFormat.format("dd MMMM yyyy", currentDate.time)
+        } (${getString(R.string.earth_fragment_press_me)})"
         current_earth_date.setOnClickListener {
             setDate()
         }
@@ -44,7 +48,9 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
             currentDate.set(Calendar.MONTH, month)
             currentDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             current_earth_date.text = DateFormat.format("dd MMMM yyyy", currentDate.time).toString()
-            viewModel.getPicturesFromMars(DateFormat.format("yyyy-MM-dd", currentDate.time).toString())
+            viewModel.getPicturesFromMars(
+                DateFormat.format("yyyy-MM-dd", currentDate.time).toString()
+            )
         }
         context?.let {
             DatePickerDialog(
