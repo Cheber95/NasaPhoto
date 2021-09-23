@@ -7,35 +7,35 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.chebertests.nasaphoto.BuildConfig
-import ru.chebertests.nasaphoto.model.appstate.AppStatePOD
+import ru.chebertests.nasaphoto.model.appstate.AppStateMars
 import ru.chebertests.nasaphoto.model.remote.PictureRetrofit
 import ru.chebertests.nasaphoto.model.remote.PictureRetrofitImpl
 
 private const val API_KEY = BuildConfig.NASA_API_KEY
 
-class PictureOfTheDayViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<AppStatePOD> = MutableLiveData(),
+class MarsFragmentViewModel(
+    private val liveDataForViewToObserve: MutableLiveData<AppStateMars> = MutableLiveData(),
     private val retrofitImpl: PictureRetrofit = PictureRetrofitImpl()
 ) : ViewModel() {
 
-    fun getData(): LiveData<AppStatePOD> {
+    fun getData(): LiveData<AppStateMars> {
         return liveDataForViewToObserve
     }
 
-    fun getPicture(date: String?) {
-        liveDataForViewToObserve.value = AppStatePOD.Loading(null)
+    fun getPicturesFromMars(date: String) {
+        liveDataForViewToObserve.value = AppStateMars.Loading(null)
         if (API_KEY.isBlank()) {
-            AppStatePOD.Error(Throwable("You API key is Empty"))
+            AppStateMars.Error(Throwable("You API key is Empty"))
         } else {
             viewModelScope.launch(Dispatchers.IO) {
-                val res = retrofitImpl.getRetrofitImpl().getPictureOfTheDay(API_KEY, date)
+                val res = retrofitImpl.getRetrofitImpl().getPicturesFromMars(API_KEY, date)
                 if (res.isSuccessful) {
-                    liveDataForViewToObserve.postValue(AppStatePOD.Success(res.body()!!))
+                    liveDataForViewToObserve.postValue(AppStateMars.Success(res.body()!!))
                 } else {
                     if (res.message().isEmpty()) {
-                        liveDataForViewToObserve.postValue(AppStatePOD.Error(Throwable("error")))
+                        liveDataForViewToObserve.postValue(AppStateMars.Error(Throwable("error")))
                     } else {
-                        liveDataForViewToObserve.postValue(AppStatePOD.Error(Throwable(res.message())))
+                        liveDataForViewToObserve.postValue(AppStateMars.Error(Throwable(res.message())))
                     }
                 }
             }

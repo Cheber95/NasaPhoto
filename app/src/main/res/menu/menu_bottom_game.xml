@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/game_menu_item_soccer"
+        android:icon="@drawable/ic_baseline_sports_soccer_24"
+        android:title="@string/game_football"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/game_menu_item_hockey"
+        android:icon="@drawable/ic_baseline_sports_hockey_24"
+        android:title="@string/game_hockey"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/game_menu_item_volley"
+        android:icon="@drawable/ic_baseline_sports_volleyball_24"
+        android:title="@string/game_volleyball"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/game_menu_item_basket"
+        android:icon="@drawable/ic_baseline_sports_basketball_24"
+        android:title="@string/game_basket"
+        app:showAsAction="ifRoom" />
+</menu>

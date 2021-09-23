@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.nasa_services.EarthFragment">
+
+        <TextView
+            style="@style/Theme.NasaPhoto.text_headers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/hello_blank_earth_fragment" />
+
+        <TextView
+            android:id="@+id/earth_fragment_current_date"
+            style="@style/Theme.NasaPhoto.text_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            tools:text="@string/app_name" />
+
+        <ru.chebertests.nasaphoto.view.EquilateralImageView
+            android:id="@+id/earth_fragment_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/default_margin"
+            app:srcCompat="@drawable/ic_baseline_block_24" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/earth_fragment_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0.025"
+            android:valueTo="0.5" />
+
+        <Button
+            android:id="@+id/earth_fragment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/earth_fragment_button" />
+
+        <Button
+            android:id="@+id/earth_fragment_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/earth_fragment_open_browser" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/earth_fragment_loading_item"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="gone" />
+
+</FrameLayout>

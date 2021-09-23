@@ -15,4 +15,24 @@
     <string name="basic_nasaPhoto_theme">Базовая тема</string>
     <string name="second_nasaPhoto_theme">Красная тема</string>
     <string name="apply_settings">Применить настройки</string>
+    <string name="settings_current_theme_title">Текущая тема</string>
+    <string name="hello_blank_mars_fragment">I am Mars Fragment</string>
+    <string name="hello_blank_earth_fragment">I am Earth Fragment</string>
+    <string name="hello_blank_info_fragment">I am Info Fragment</string>
+    <string name="item_nasa_services">Сервисы NASA</string>
+    <string name="item_bottomnav_game">Игра с BottomNav</string>
+    <string name="game_football">Футбол</string>
+    <string name="game_hockey">Хоккей</string>
+    <string name="game_volleyball">Воллейбол</string>
+    <string name="game_basket">Баскетбол</string>
+    <string name="game_soccer_button_text">Удар!</string>
+    <string name="game_hockey_button_text">Шайбу!</string>
+    <string name="game_volley_button_text">Подача!</string>
+    <string name="game_basket_button_text">Бросок!</string>
+    <string name="game_sport_football">Вид спорта</string>
+    <string name="game_sport_button_text">Действие</string>
+    <string name="info_fragment_overview_info">Пролистывайте фрагменты. \nНа данный момент реализованы фрагменты:\n- Фото с Марса: подборка фото, сделанных в выбранный день;\n- Фото Земли: планируется подборка фото Земли.\nВернуться на основной экран можно нажатием клавиши «назад»</string>
+    <string name="earth_fragment_button">Обновить снимок</string>
+    <string name="earth_fragment_open_browser">Открыть в браузере</string>
+    <string name="earth_fragment_press_me">Нажать, чтобы изменить</string>
 </resources>

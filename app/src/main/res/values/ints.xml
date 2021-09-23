@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="soccer">0</integer>
+    <integer name="hockey">1</integer>
+    <integer name="volley">2</integer>
+    <integer name="basket">3</integer>
+</resources>

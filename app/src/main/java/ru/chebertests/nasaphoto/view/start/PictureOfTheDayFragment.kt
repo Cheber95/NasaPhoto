@@ -1,15 +1,13 @@
-package ru.chebertests.nasaphoto.view
+package ru.chebertests.nasaphoto.view.start
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.children
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
@@ -17,10 +15,12 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.picture_of_the_day_fragment.*
 import ru.chebertests.nasaphoto.R
 import ru.chebertests.nasaphoto.model.appstate.AppStatePOD
+import ru.chebertests.nasaphoto.view.BaseFragment
+import ru.chebertests.nasaphoto.view.MainActivity
 import ru.chebertests.nasaphoto.viewmodel.PictureOfTheDayViewModel
 import java.util.*
 
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragment) {
 
     private lateinit var viewModel: PictureOfTheDayViewModel
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
@@ -35,22 +35,15 @@ class PictureOfTheDayFragment : Fragment() {
         getString(R.string.today)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
         date.timeInMillis = System.currentTimeMillis()
+        // для загрузки видео использовать дату "2021-09-17" - последняя дата, когда приходило видео
         viewModel.getPicture(null)
-
-        return inflater.inflate(R.layout.picture_of_the_day_fragment, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -61,6 +54,7 @@ class PictureOfTheDayFragment : Fragment() {
 
         chip_group.setOnCheckedChangeListener { chip_group, position ->
             chip_group.findViewById<Chip>(position)?.let {
+                image_view.setOnClickListener { null }
                 viewModel.getPicture(dateFormatter(it.text as String))
             }
         }
@@ -77,11 +71,7 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> {
-                Toast.makeText(
-                    context,
-                    "В методичке предложено сделать раздел избранное",
-                    Toast.LENGTH_SHORT
-                ).show()
+                toast("В методичке предложено сделать раздел избранное")
             }
             R.id.app_bar_settings -> {
                 parentFragmentManager
@@ -99,11 +89,17 @@ class PictureOfTheDayFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        image_view.setOnClickListener { null }
+    }
+
     override fun onDestroyOptionsMenu() {
         super.onDestroyOptionsMenu()
         setHasOptionsMenu(false)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun renderData(state: AppStatePOD?) {
         when (state) {
             is AppStatePOD.Success -> {
@@ -114,12 +110,25 @@ class PictureOfTheDayFragment : Fragment() {
                         .with(image_view)
                         .load(R.drawable.ic_banner_foreground)
                         .into(image_view)
-                    Toast.makeText(context, "image not found", Toast.LENGTH_LONG).show()
+                    toast("image not found")
                 } else {
-                    Glide
-                        .with(image_view)
-                        .load(url)
-                        .into(image_view)
+                    if (url.substringAfterLast(".") == "jpg") {
+                        Glide
+                            .with(image_view)
+                            .load(url)
+                            .into(image_view)
+                    } else {
+                        val playIcon = context?.getDrawable(R.drawable.ic_baseline_play)
+                        Glide
+                            .with(image_view)
+                            .load(playIcon)
+                            .into(image_view)
+                        image_view.setOnClickListener {
+                            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                                data = Uri.parse(url)
+                            })
+                        }
+                    }
                     title.text = serverResponseData.title
 
                     bottom_sheet_title.text = serverResponseData.title
@@ -135,8 +144,10 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
             is AppStatePOD.Error -> {
-                state.error.printStackTrace()
-                Toast.makeText(context, "error", Toast.LENGTH_LONG).show()
+                state.apply {
+                    error.printStackTrace()
+                    error.message?.let { toast(it) }
+                }
             }
         }
     }
@@ -152,11 +163,11 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun dateFormatter(day: String) : String? {
+    private fun dateFormatter(day: String): String? {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
         calendar.timeZone = TimeZone.getTimeZone("Etc/GMT-7")
-        when(day) {
+        when (day) {
             beforeYesterday -> {
                 calendar.add(Calendar.DAY_OF_MONTH, -2)
             }
@@ -167,7 +178,7 @@ class PictureOfTheDayFragment : Fragment() {
                 return null
             }
         }
-        return DateFormat.format("yyyy-MM-dd",calendar.time).toString()
+        return DateFormat.format("yyyy-MM-dd", calendar.time).toString()
     }
 
     companion object {

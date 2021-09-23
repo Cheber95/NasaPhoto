@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.PictureOfTheDayFragment">
+    tools:context=".view.start.PictureOfTheDayFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -79,7 +79,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:contentDescription="@string/photo_of_the_day_stub"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title"
@@ -102,8 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottom_app_bar"
-            android:tint="?themeColorOnPrimary"
-            app:srcCompat="@drawable/ic_baseline_block_24" />
+            app:srcCompat="@drawable/ic_baseline_block_24"
+            app:tint="?themeColorPrimary" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
