@@ -98,6 +98,8 @@ class EarthFragment : BaseFragment(R.layout.fragment_earth) {
                 }
             }
             is AppStateEarth.Error -> {
+                earth_fragment_loading_item.visibility = View.GONE
+                earth_fragment_image.visibility = View.VISIBLE
                 state.error.apply {
                     printStackTrace()
                     message?.let { toast(it) }

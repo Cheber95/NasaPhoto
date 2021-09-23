@@ -145,6 +145,8 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
             }
             is AppStatePOD.Error -> {
                 state.apply {
+                    loading_item.visibility = View.GONE
+                    image_view.visibility = View.VISIBLE
                     error.printStackTrace()
                     error.message?.let { toast(it) }
                 }

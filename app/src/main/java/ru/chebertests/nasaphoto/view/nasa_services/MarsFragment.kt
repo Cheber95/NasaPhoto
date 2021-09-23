@@ -86,6 +86,8 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
                 }
             }
             is AppStateMars.Error -> {
+                mars_recycler_view.visibility = View.VISIBLE
+                loading_item.visibility = View.GONE
                 state.error.printStackTrace()
                 state.error.message?.let { toast(it) }
             }
