@@ -6,7 +6,6 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
@@ -19,8 +18,6 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_earth.*
-import kotlinx.android.synthetic.main.fragment_mars.*
-import ru.chebertests.nasaphoto.BuildConfig
 import ru.chebertests.nasaphoto.R
 import ru.chebertests.nasaphoto.model.appstate.AppStateEarth
 import ru.chebertests.nasaphoto.view.BaseFragment

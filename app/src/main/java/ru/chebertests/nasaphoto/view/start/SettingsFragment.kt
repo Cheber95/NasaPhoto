@@ -26,7 +26,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         settings_theme_selector_group.setOnCheckedChangeListener { group, checkedId ->
             val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
             val editor = sharedPref?.edit()
-            when(checkedId) {
+            when (checkedId) {
                 settings_theme_selector_one.id -> {
                     editor?.let {
                         it.putString(THEME_TAG, THEME_DEFAULT)
