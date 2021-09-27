@@ -6,7 +6,6 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
@@ -19,8 +18,6 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_earth.*
-import kotlinx.android.synthetic.main.fragment_mars.*
-import ru.chebertests.nasaphoto.BuildConfig
 import ru.chebertests.nasaphoto.R
 import ru.chebertests.nasaphoto.model.appstate.AppStateEarth
 import ru.chebertests.nasaphoto.view.BaseFragment
@@ -64,7 +61,7 @@ class EarthFragment : BaseFragment(R.layout.fragment_earth) {
             DateFormat.format("dd MMMM yyyy", calendarDate.time)
         } (${getString(R.string.earth_fragment_press_me)})"
 
-        earth_fragment_range.addOnChangeListener { slider, value, fromUser ->
+        earth_fragment_range.addOnChangeListener { _, value, _ ->
             dim = value.toDouble()
         }
 
@@ -98,6 +95,8 @@ class EarthFragment : BaseFragment(R.layout.fragment_earth) {
                 }
             }
             is AppStateEarth.Error -> {
+                earth_fragment_loading_item.visibility = View.GONE
+                earth_fragment_image.visibility = View.VISIBLE
                 state.error.apply {
                     printStackTrace()
                     message?.let { toast(it) }

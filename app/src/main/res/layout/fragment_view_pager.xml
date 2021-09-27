@@ -18,7 +18,7 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     </LinearLayout>
 
@@ -29,6 +29,6 @@
         android:layout_gravity="bottom"
         app:ci_drawable="@drawable/ic_shape_indicator"
         app:ci_drawable_unselected="@drawable/ic_shape_indicator"
-        app:ci_orientation="horizontal"
-        app:ci_gravity="center"/>
+        app:ci_gravity="center"
+        app:ci_orientation="horizontal" />
 </FrameLayout>

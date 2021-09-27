@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 
-open class BaseFragment(@LayoutRes layout : Int) : Fragment(layout) {
+open class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
 
     fun toast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

@@ -5,16 +5,17 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import ru.chebertests.nasaphoto.view.BaseFragment
 
-class ViewPagerAdapter(private val fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
+class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
+    FragmentStatePagerAdapter(fragmentManager) {
 
-    private lateinit var fragments : Array<BaseFragment>
+    private lateinit var fragments: Array<BaseFragment>
 
     fun setData(data: Array<BaseFragment>) {
         fragments = data
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when(fragments[position]) {
+        return when (fragments[position]) {
             is InfoFragment -> {
                 "Инфо"
             }

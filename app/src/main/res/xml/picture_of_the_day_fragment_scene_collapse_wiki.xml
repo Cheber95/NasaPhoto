@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@layout/picture_of_the_day_fragment_start"
+        motion:constraintSetStart="@layout/picture_of_the_day_fragment"
+        motion:duration="1500">
+
+        <OnClick motion:targetId="@id/input_layout" />
+
+    </Transition>
+
+</MotionScene>
