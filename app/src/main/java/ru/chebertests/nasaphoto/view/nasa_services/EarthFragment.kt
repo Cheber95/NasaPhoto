@@ -13,9 +13,15 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.text.format.DateFormat
+import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_earth.*
 import ru.chebertests.nasaphoto.R
@@ -29,6 +35,8 @@ private const val REFRESH_TIME = 300_000L
 private const val MIN_DISTANCE = 100f
 
 class EarthFragment : BaseFragment(R.layout.fragment_earth) {
+
+    private var isEnlarged: Boolean = false
 
     private val viewModel by lazy {
         ViewModelProvider(this).get(EarthFragmentViewModel::class.java)
@@ -71,6 +79,31 @@ class EarthFragment : BaseFragment(R.layout.fragment_earth) {
 
         earth_fragment_current_date.setOnClickListener {
             setDate()
+        }
+
+        earth_fragment_image.setOnClickListener {
+            TransitionManager.beginDelayedTransition(
+                earth_fragment_container, TransitionSet()
+                    .addTransition(ChangeBounds())
+                    .addTransition(ChangeImageTransform())
+            )
+
+            val params = earth_fragment_image.layoutParams
+            params.height =
+                if (isEnlarged) {
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                } else {
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                }
+            earth_fragment_image.layoutParams = params
+            earth_fragment_image.scaleType =
+                if (isEnlarged) {
+                    ImageView.ScaleType.CENTER_CROP
+                } else {
+                    ImageView.ScaleType.FIT_CENTER
+                }
+
+            isEnlarged = !isEnlarged
         }
     }
 
