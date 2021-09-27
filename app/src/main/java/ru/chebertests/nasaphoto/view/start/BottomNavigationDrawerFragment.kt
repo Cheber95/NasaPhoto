@@ -40,6 +40,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                         .commit()
                 }
             }
+            this.dismiss()
             true
         }
     }

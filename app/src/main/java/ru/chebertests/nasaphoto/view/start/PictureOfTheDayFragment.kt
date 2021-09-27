@@ -20,7 +20,7 @@ import ru.chebertests.nasaphoto.view.MainActivity
 import ru.chebertests.nasaphoto.viewmodel.PictureOfTheDayViewModel
 import java.util.*
 
-class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragment) {
+class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragment_start) {
 
     private lateinit var viewModel: PictureOfTheDayViewModel
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>

@@ -61,7 +61,7 @@ class EarthFragment : BaseFragment(R.layout.fragment_earth) {
             DateFormat.format("dd MMMM yyyy", calendarDate.time)
         } (${getString(R.string.earth_fragment_press_me)})"
 
-        earth_fragment_range.addOnChangeListener { slider, value, fromUser ->
+        earth_fragment_range.addOnChangeListener { _, value, _ ->
             dim = value.toDouble()
         }
 

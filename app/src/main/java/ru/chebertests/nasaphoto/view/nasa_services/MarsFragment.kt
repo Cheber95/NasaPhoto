@@ -30,6 +30,11 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
         viewModel = ViewModelProvider(this).get(MarsFragmentViewModel::class.java)
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
+        mars_recycler_view.adapter = adapter
+        mars_recycler_view.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        adapter.setData(null)
+
         currentDate.timeInMillis = System.currentTimeMillis()
         current_earth_date.text = "${
             DateFormat.format("dd MMMM yyyy", currentDate.time)
@@ -39,15 +44,21 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
         }
 
         viewModel.getPicturesFromMars(DateFormat.format("yyyy-MM-dd", currentDate.time).toString())
+
+        mars_toolbar.title = "${DateFormat.format("dd MMMM yyyy", currentDate.time)}"
+        mars_toolbar.setTitleTextColor(R.attr.themeColorOnPrimary)
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setDate() {
         val d = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             currentDate.set(Calendar.YEAR, year)
             currentDate.set(Calendar.MONTH, month)
             currentDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            current_earth_date.text = DateFormat.format("dd MMMM yyyy", currentDate.time).toString()
+            current_earth_date.text = "${
+                DateFormat.format("dd MMMM yyyy", currentDate.time)
+            } (${getString(R.string.earth_fragment_press_me)})"
             viewModel.getPicturesFromMars(
                 DateFormat.format("yyyy-MM-dd", currentDate.time).toString()
             )
@@ -69,14 +80,12 @@ class MarsFragment : BaseFragment(R.layout.fragment_mars) {
                 mars_recycler_view.visibility = View.VISIBLE
                 loading_item.visibility = View.GONE
                 val photos = state.serverResponseData.photos
-                if (photos.size == 0) {
+                if (photos.isEmpty()) {
                     toast("За этот день нет фото")
+                    adapter.setData(null)
                 } else {
                     toast("За этот день есть ${photos.size} фото поверхности Марса")
                     adapter.setData(photos)
-                    mars_recycler_view.adapter = adapter
-                    mars_recycler_view.layoutManager =
-                        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 }
             }
             is AppStateMars.Loading -> {
