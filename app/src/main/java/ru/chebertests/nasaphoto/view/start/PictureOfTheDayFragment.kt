@@ -17,6 +17,7 @@ import ru.chebertests.nasaphoto.R
 import ru.chebertests.nasaphoto.model.appstate.AppStatePOD
 import ru.chebertests.nasaphoto.view.BaseFragment
 import ru.chebertests.nasaphoto.view.MainActivity
+import ru.chebertests.nasaphoto.view.notelist.NoteFragment
 import ru.chebertests.nasaphoto.viewmodel.PictureOfTheDayViewModel
 import java.util.*
 
@@ -71,7 +72,11 @@ class PictureOfTheDayFragment : BaseFragment(R.layout.picture_of_the_day_fragmen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> {
-                toast("В методичке предложено сделать раздел избранное")
+                parentFragmentManager
+                    .beginTransaction()
+                    .addToBackStack("tag")
+                    .replace(R.id.container, NoteFragment.newInstance())
+                    .commit()
             }
             R.id.app_bar_settings -> {
                 parentFragmentManager
